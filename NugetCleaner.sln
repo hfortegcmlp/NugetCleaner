@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NugetCleaner", "NugetCleaner\NugetCleaner.csproj", "{8319F30B-7757-4459-A775-0E22A72C0F7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectoryScanner", "DirectoryScanner\DirectoryScanner.csproj", "{9DC21559-5810-4141-99F9-3C7A12650FA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{7CF15C08-E250-46BB-879F-C4B1A5071D79}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8319F30B-7757-4459-A775-0E22A72C0F7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8319F30B-7757-4459-A775-0E22A72C0F7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8319F30B-7757-4459-A775-0E22A72C0F7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8319F30B-7757-4459-A775-0E22A72C0F7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DC21559-5810-4141-99F9-3C7A12650FA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DC21559-5810-4141-99F9-3C7A12650FA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DC21559-5810-4141-99F9-3C7A12650FA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DC21559-5810-4141-99F9-3C7A12650FA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CF15C08-E250-46BB-879F-C4B1A5071D79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CF15C08-E250-46BB-879F-C4B1A5071D79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CF15C08-E250-46BB-879F-C4B1A5071D79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CF15C08-E250-46BB-879F-C4B1A5071D79}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
