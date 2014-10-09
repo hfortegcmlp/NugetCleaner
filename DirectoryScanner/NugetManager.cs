@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,14 @@ namespace DirectoryScanner
 {
     public class NugetManager
     {
+        public class NugetPackage
+        {
+            public string FullFileName { get; set; }
+            public string FileName { get; set; }
+            public Version Version { get; set; }
+            public string PackageName { get; set; }
+        }
+
         public Version GetVersion(string fileName)
         {
             var parts = fileName.Split('.');
@@ -44,8 +53,10 @@ namespace DirectoryScanner
         /// <returns></returns>
         public string GetPackageName(string fileName)
         {
-            var parts = fileName.Split('.');
+            var justFileName = Path.GetFileName(fileName);
+            var parts = justFileName.Split('.');
             var nameParts = new List<string>();
+            
             //last part will be nuget, ignore that
             foreach (string t in parts)
             {
@@ -66,6 +77,19 @@ namespace DirectoryScanner
 
             var packageName = String.Join(".", nameParts);
             return packageName;
+        }
+
+        public List<NugetPackage> GetPackages(IList<string> files)
+        {
+            var retVal = files.Select(sourceFile => new NugetPackage
+            {
+                FileName = Path.GetFileName(sourceFile),
+                FullFileName = sourceFile,
+                PackageName = GetPackageName(sourceFile),
+                Version = GetVersion(sourceFile)
+            }).ToList();
+
+            return retVal;
         }
     }
 }

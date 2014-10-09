@@ -46,7 +46,7 @@ namespace DirectoryScanner
         public void CopyFromSourceToDest(string packageFileName, string packageName)
         {
             //first delete all packages
-            foreach (var toDelete in FilesInDestination.Where(x=>x.StartsWith(packageName)))
+            foreach (var toDelete in FilesInDestination.Where(x => x.Contains(packageName)))
             {
                 File.Delete(Path.Combine(Destination, toDelete));
             }

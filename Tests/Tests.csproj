@@ -42,8 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Acceptance\ScannerTest.cs" />
     <Compile Include="Integration\ScannerTest.cs" />
-    <Compile Include="NugetVersionManagerTest.cs" />
+    <Compile Include="NugetManagerTest.cs" />
     <Compile Include="FileManagerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

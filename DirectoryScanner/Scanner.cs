@@ -1,26 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
 using System.Linq;
-using System.Runtime.ConstrainedExecution;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DirectoryScanner
 {
     public class Scanner
     {
-
-        private class NugetPackage
-        {
-            public string FullFileName { get; set; }
-            public string FileName { get; set; }
-            public Version Version { get; set; }
-            public string PackageName { get; set; }
-        }
-
-        private List<NugetPackage> _packages;
+        private List<NugetManager.NugetPackage> _packages;
         private readonly FileManager _fileManager;
         private readonly NugetManager _nugetManager;
 
@@ -35,22 +22,9 @@ namespace DirectoryScanner
             _nugetManager = new NugetManager();
         }
 
-        private List<NugetPackage> GetPackages()
-        {
-            var retVal = _fileManager.FilesInSource.Select(sourceFile => new NugetPackage
-            {
-                FileName = Path.GetFileName(sourceFile),
-                FullFileName = sourceFile,
-                PackageName = _nugetManager.GetPackageName(sourceFile),
-                Version = _nugetManager.GetVersion(sourceFile)
-            }).ToList();
-
-            return retVal;
-        }
-
         public void Process()
         {
-            _packages = GetPackages();
+            _packages = _nugetManager.GetPackages(_fileManager.FilesInSource);
 
             //Get a list with the latest version of each package
             var latestVersionOfEachPackage = GetLatestVersionOfEachPackage();
@@ -67,9 +41,9 @@ namespace DirectoryScanner
         /// Gets unique list of package names (not filename)
         /// </summary>
         /// <returns></returns>
-        private IEnumerable<NugetPackage> GetLatestVersionOfEachPackage()
+        private IEnumerable<NugetManager.NugetPackage> GetLatestVersionOfEachPackage()
         {
-            var retVal = new List<NugetPackage>();
+            var retVal = new List<NugetManager.NugetPackage>();
 
             foreach (var package in _packages)
             {
