@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using DirectoryScanner;
 using NUnit.Framework;
 
@@ -52,7 +53,7 @@ namespace Tests
             Assert.AreEqual(2, filesInSource.Count);
             Assert.AreEqual(3, filesInDestnation.Count);
 
-            Assert.IsTrue(filesInSource.Contains(fileNameToTestFor));
+            Assert.IsTrue(filesInSource.FirstOrDefault(x => x.EndsWith(fileNameToTestFor)) != null);
         }
 
 
@@ -60,14 +61,14 @@ namespace Tests
         {
             var filePath = Path.Combine(_sourceDir, fileName);
 
-            File.Create(filePath);
+            File.Create(filePath).Close();
         }
 
         private void CreateDestFile(string fileName)
         {
             var filePath = Path.Combine(_destDir, fileName);
 
-            File.Create(filePath);
+            File.Create(filePath).Close();
         }
     }
 }
