@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using System.Linq;
 using DirectoryScanner;
 using NUnit.Framework;
 
@@ -17,13 +16,19 @@ namespace Tests.Acceptance
         [SetUp]
         public void Setup()
         {
-            _sourceDir = Path.Combine(Directory.GetCurrentDirectory(), "ScannerSource");
-            _destDir = Path.Combine(Directory.GetCurrentDirectory(), "ScannerDestination");
+            _sourceDir = Path.Combine(Directory.GetCurrentDirectory(), "Resources\\Source");
+            _destDir = Path.Combine(Directory.GetCurrentDirectory(), "Resources\\Destination");
 
             _sut = new Scanner(_sourceDir, _destDir);
             _fileManager = new FileManager(_sourceDir, _destDir);
             _nugetManger = new NugetManager();
         }
 
+        [Test]
+        public void CanProcessRealDirectory()
+        {
+            _sut.Process();
+            Assert.IsTrue(true);
+        }
     }
 }

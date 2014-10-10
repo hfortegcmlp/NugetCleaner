@@ -29,6 +29,10 @@ namespace DirectoryScanner
         {
             Source = source;
             Destination = destination;
+            if(!Directory.Exists(Destination))
+            {
+                Directory.CreateDirectory(Destination);
+            }
         }
 
         private IList<string> GetListOfFileNames(string folder)
